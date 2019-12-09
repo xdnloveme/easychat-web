@@ -1,0 +1,9 @@
+
+.loadingRotate {
+    animation: loadingRotate 1s cubic-bezier(0.17,0.33,0.5,.67) infinite
+}
+
+@keyframes loadingRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}

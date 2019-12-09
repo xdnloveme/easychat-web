@@ -1,31 +1,58 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="easy-chat-main_view">
+      <RouteTransition>
+        <router-view />
+      </RouteTransition>
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+import { mapActions, mapMutations } from 'vuex';
+
+export default {
+  name: 'App',
+  data () {
+    return {};
+  },
+  created () {
+    this.initKeepAliveRoutes();
+  },
+  methods: {
+    ...mapMutations({
+      initKeepAliveRoutes: 'DYNAMIC_KEEPALIVE_ROUTES',
+    }),
+  },
+};
+</script>
+
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body,
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+*,
+div,
+input {
+  box-sizing: border-box;
 }
+
+.easy-chat-main_view {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+/* 
+.easy-chat-main_view::-webkit-scrollbar {
+  display: none;
+} */
 </style>

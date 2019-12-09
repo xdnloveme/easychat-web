@@ -8,9 +8,18 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@babel/core": "^7.4.3",
+    "@vue/babel-preset-app": "^3.6.0",
+    "autoprefixer": "^9.6.1",
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "pinyin": "^2.9.0",
+    "rxjs": "^6.5.3",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-style-loader": "^4.1.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -19,7 +28,12 @@
     "@vue/cli-service": "^3.6.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-vue": "^5.2.3",
+    "mockjs": "^1.0.1-beta3",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
+    "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
   }
 }
