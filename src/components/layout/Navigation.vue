@@ -63,7 +63,7 @@ export default {
   background-color: $easychat-background-nav;
   background-image: linear-gradient(to right, #3f4246, $easychat-background-nav);
   color: #ffffff;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;

@@ -101,7 +101,7 @@ export default {
             this.$toast(res.data.message).toast();
           });
         },
-      })
+      });
     },
   },
 };
@@ -135,6 +135,7 @@ export default {
       top: 50%;
       transform: translate(-50%, -20px);
       left: 50%;
+      z-index: 0;
     }
   }
   .avtar-preview-content {
@@ -179,4 +180,3 @@ export default {
   }
 }
 </style>
-

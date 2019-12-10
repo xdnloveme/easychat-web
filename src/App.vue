@@ -27,7 +27,6 @@ export default {
 };
 </script>
 
-
 <style>
 body,
 html {
@@ -43,6 +42,11 @@ html {
 div,
 input {
   box-sizing: border-box;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 .easy-chat-main_view {
