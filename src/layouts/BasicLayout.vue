@@ -59,8 +59,8 @@ export default {
       const global = Vue.prototype.$global;
       Vue.prototype.$global = {
         ...global,
-        SCREEN_WIDTH: window.screen.width,
-        SCREEN_HEIGHT: window.screen.height,
+        SCREEN_WIDTH: window.innerWidth,
+        SCREEN_HEIGHT: window.innerHeight,
       };
 
       window.addEventListener('resize', this.handleResize);
@@ -72,8 +72,8 @@ export default {
     handleResize () {
       Vue.prototype.$global = {
         ...global,
-        SCREEN_WIDTH: window.screen.width,
-        SCREEN_HEIGHT: window.screen.height,
+        SCREEN_WIDTH: window.innerWidth,
+        SCREEN_HEIGHT: window.innerHeight,
       };
     },
   },

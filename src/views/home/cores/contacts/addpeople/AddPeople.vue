@@ -3,7 +3,7 @@
     <EMask
       ref="mask"
       :backgroundColor="searchValue.length > 0 ? '#ffffff' : ''"
-      :visiable="visibleMask"
+      :visible="visibleMask"
       @handleClose="handleClose"
     >
       <div class="search-newPeople-container">
@@ -118,12 +118,6 @@ export default {
   created () {
     this.getRecommendPeople();
   },
-  activated () {
-    document.body.appendChild(this.$refs.mask.$el);
-  },
-  deactivated () {
-    document.body.removeChild(this.$refs.mask.$el);
-  },
   methods: {
     getStatus ({ isFinish, isAgreed, isAddBlackList, isExpired }) {
       if (isFinish) {
@@ -156,7 +150,6 @@ export default {
     },
     handleShowRequest (item) {
       const { isAgreed, userInfo, requestOpenId } = item;
-      console.log(item);
       this.$router.push({
         name: 'UserCard',
         params: {

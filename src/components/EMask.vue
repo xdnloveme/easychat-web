@@ -1,6 +1,6 @@
 <template>
   <transition name="easychat_modal_mask">
-    <div v-show="visiable" @click="handleClose" :style="maskStyle" class="easychat-modal-mask">
+    <div ref="mask" v-show="visible" @click="handleClose" :style="maskStyle" class="easychat-modal-mask">
       <slot></slot>
     </div>
   </transition>
@@ -10,7 +10,7 @@
 export default {
   name: 'EMask',
   props: {
-    visiable: {
+    visible: {
       type: Boolean,
       default: false,
     },
@@ -26,6 +26,12 @@ export default {
       }
     },
   },
+  mounted () {
+    document.body.appendChild(this.$refs.mask);
+  },
+  beforeDestroy () {
+    document.body.removeChild(this.$refs.mask);
+  },
   methods: {
     handleClose (e) {
       this.$emit('handleClose', false);
@@ -37,7 +43,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .easychat-modal-mask {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;

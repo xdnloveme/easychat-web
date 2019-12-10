@@ -1,21 +1,19 @@
 <template>
-  <div class="action-select-wrapper">
-    <Drawer :drawerStyle="currentStyle" v-model="localVisible" :isShowHeader="false">
-      <ul class="action-select-ul">
-        <li
-          :class="['action-select-li', item.isSelected ? 'action-selected' : '']"
-          @click="select(item)"
-          v-for="(item, $key) in list"
-          :key="'popupSelect' + $key"
-        >
-          <a href="javascript:;">{{ item.name }}</a>
-        </li>
-        <li class="action-select-li-cancel" @click="cancel">
-          <a href="javascript:;">取消</a>
-        </li>
-      </ul>
-    </Drawer>
-  </div>
+  <Drawer :drawerStyle="currentStyle" v-model="localVisible" :isShowHeader="false">
+    <ul class="action-select-ul">
+      <li
+        :class="['action-select-li', item.isSelected ? 'action-selected' : '']"
+        @click="select(item)"
+        v-for="(item, $key) in list"
+        :key="'popupSelect' + $key"
+      >
+        <a href="javascript:;">{{ item.name }}</a>
+      </li>
+      <li class="action-select-li-cancel" @click="cancel">
+        <a href="javascript:;">取消</a>
+      </li>
+    </ul>
+  </Drawer>
 </template>
 
 <script>
@@ -69,41 +67,38 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.action-select-wrapper {
-  .action-select-ul {
-    margin: 0;
-    padding: 0px;
-    li {
-      list-style: none;
-      line-height: 48px;
-      text-align: center;
+<style lang="scss">
+.action-select-ul {
+  margin: 0;
+  padding: 0px;
+  li {
+    list-style: none;
+    line-height: 48px;
+    text-align: center;
 
-      a {
-        text-decoration: none;
-        color: #222222;
-        display: block;
-        &:active {
-          background-color: $easychat-background;
-        }
+    a {
+      text-decoration: none;
+      color: #222222;
+      display: block;
+      &:active {
+        background-color: $easychat-background;
       }
     }
+  }
 
-    .action-select-li {
-      border-bottom: 1px solid $easychat-border;
-      margin: 0 12px;
-    }
+  .action-select-li {
+    border-bottom: 1px solid $easychat-border;
+    margin: 0 12px;
+  }
 
-    .action-selected {
-      a {
-        color: #f4333c;
-      }
+  .action-selected {
+    a {
+      color: #f4333c;
     }
+  }
 
-    .action-select-li-cancel {
-      line-height: 60px;
-    }
+  .action-select-li-cancel {
+    line-height: 60px;
   }
 }
 </style>
-

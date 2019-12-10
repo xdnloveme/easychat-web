@@ -49,7 +49,7 @@ export default {
       logoImg: logo,
       username: '',
       password: '',
-      visiable: true,
+      visible: true,
       lock,
       user,
     }

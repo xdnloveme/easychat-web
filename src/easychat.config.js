@@ -188,6 +188,7 @@ export default {
           component: () => import('@/views/avatar'),
           meta: {
             title: '头像选择',
+            requiresAuth: true,
           },
         },
       ],

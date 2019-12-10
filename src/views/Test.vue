@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Scroll
+    <!-- <Scroll
       @pull-down-start="pullDownProcess"
       :pullDown="{
         height: 50,
@@ -20,7 +20,7 @@
       :height="500"
     >
       <p v-for="item in dataNum" :key="item">测试数据 {{ item }}</p>
-    </Scroll>
+    </Scroll> -->
     <!-- <Picker :height="200" v-bind:selected.sync="value" :dataSource="pickerData2"/>
     {{value}} -->
 
@@ -31,13 +31,15 @@
     }" :visible.sync="visible" :selected.sync="pickedValue"/> -->
 
     <button @click="test1">测试1</button>
-    {{pickedValue1}}
-    <PickerDate :visible.sync="visible1" :selected.sync="pickedValue1"/>
+    {{ pickedValue1 }}
+    <PickerDate :visible.sync="visible1" :selected.sync="pickedValue1" />
     <Success :options="options" />
   </div>
 </template>
 
 <script>
+// 测试页面（仅供参考）
+
 import Animate from '@/utils/animate';
 import Picker from '@/components/fragment/Picker';
 import PickerArea from '@/components/fragment/PickerArea';
@@ -56,7 +58,7 @@ const DEFAULT_OPTIONS = {
     name: '没有收到激活邮件?',
     click: null,
   },
-}
+};
 
 export default {
   name: 'Test',
@@ -208,7 +210,6 @@ export default {
   mounted () {
     // ...
     // this.test();
-    
   },
   methods: {
     pullDownProcess () {
@@ -243,4 +244,3 @@ p {
   margin-top: 0px;
 }
 </style>
-

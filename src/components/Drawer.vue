@@ -1,11 +1,12 @@
 <template>
   <transition :duration="200" :name="animationName" @enter="handleEnter" @after-leave="handleAfterLeave">
-    <div class="easychat-drawer-container" v-show="value">
-      <EMask :visiable="value" @handleClose="$emit('input', false)"></EMask>
-      <div
-        :style="drawerStyle"
-        :class="['easychat-drawer', isFullScreen ? 'easychat-drawer-fullscrenn' : '', computedSize]"
-      >
+    <div
+      ref="drawer"
+      :class="['easychat-drawer-container', isFullScreen ? 'easychat-drawer-fullscrenn' : '']"
+      v-show="value"
+    >
+      <EMask :visible="value" @handleClose="$emit('input', false)"></EMask>
+      <div :style="drawerStyle" :class="['easychat-drawer', computedSize]">
         <div v-if="isShowHeader" slot="header" class="easychat-drawer-header">
           <slot name="header">
             <div class="header-default">
@@ -54,6 +55,14 @@ export default {
       },
     },
   },
+  mounted () {
+    document.body.appendChild(this.$refs.drawer);
+  },
+  beforeDestroy () {
+    if (this.$refs.drawer) {
+      document.body.removeChild(this.$refs.drawer);
+    }
+  },
   computed: {
     animationName () {
       return `easychat-animate-${this.direction}`;
@@ -83,12 +92,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .easychat-drawer-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  top: 0;
-  z-index: 1000;
+  z-index: 1001;
 
   .easychat-drawer {
     position: absolute;
@@ -122,13 +130,6 @@ export default {
     width: 100%;
   }
 
-  .easychat-drawer-fullscrenn {
-    height: 100%;
-    top: 0px;
-    width: 100%;
-    left: 0px;
-  }
-
   .easychat-drawer-header {
     border-bottom: 1px solid $easychat-border-light;
     padding: 8px 16px;
@@ -142,6 +143,17 @@ export default {
       color: $easychat-primary-color;
       float: right;
     }
+  }
+}
+
+.easychat-drawer-fullscrenn {
+  height: 100%;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+
+  .easychat-drawer {
+    height: 100%;
   }
 }
 

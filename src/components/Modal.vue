@@ -6,7 +6,7 @@
     @after-leave="handleAfterLeave"
   >
     <div v-show="value" class="easychat-modal-container">
-      <EMask :visiable="value" @handleClose="$emit('input', false)"></EMask>
+      <EMask :visible="value" @handleClose="$emit('input', false)"></EMask>
       <div
         class="easychat-modal"
         :style="localOptions.style"

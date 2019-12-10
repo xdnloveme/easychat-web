@@ -2,13 +2,13 @@
   <div :style="imgStyle" class="image-wall-warpper">
     <img ref="imgSource" @click="showMask" :src="imgSrc" />
     <div ref="mask">
-      <EMask backgroundColor="#000000" :visiable="visiable" @handleClose="handleClose"></EMask>
+      <EMask backgroundColor="#000000" :visible="visible" @handleClose="handleClose"></EMask>
       <transition name="image-wall-scale">
         <img
           :style="maskImgStyle"
           @click="handleClose"
-          v-show="visiable"
-          :class="['mask-img', visiable ? 'mask-img-show' : 'mask-img-hidden']"
+          v-show="visible"
+          :class="['mask-img', visible ? 'mask-img-show' : 'mask-img-hidden']"
           :src="imgSrc"
         />
       </transition>
@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      visiable: false,
+      visible: false,
       maskImgStyle: {},
       rate: 0,
     };
@@ -52,18 +52,20 @@ export default {
     document.body.removeChild(this.$refs.mask);
   },
   watch: {
-    visiable (value) {
+    visible (value) {
       this.initLocation();
+      const { SCREEN_HEIGHT } = this.$global;
       const { height, top, width, left } = this.imgSrcDom.getBoundingClientRect();
       if (value) {
         setTimeout(() => {
+          const top = `${SCREEN_HEIGHT / 2 - (this.rate * height) / 2}px`;
           this.setStyle({
             width: `${width * this.rate}px`,
             height: `${height * this.rate}px`,
             left: `0px`,
-            top: `${this.device_height / 2 - (this.rate * height) / 2}px`,
+            top,
           });
-        }, 0);
+        }, 10);
       }
     },
   },
@@ -78,8 +80,6 @@ export default {
   methods: {
     init () {
       document.body.appendChild(this.$refs.mask);
-      this.device_width = window.screen.availWidth;
-      this.device_height = window.screen.availHeight;
       this.imgSrcDom = this.$refs.imgSource;
       // 在路由过渡完成后
       this.$nextTransitAfter(() => {
@@ -87,8 +87,9 @@ export default {
       });
     },
     initLocation () {
+      const { SCREEN_WIDTH } = this.$global;
       const { width, height, left, top } = this.imgSrcDom.getBoundingClientRect();
-      this.rate = this.device_width / width;
+      this.rate = SCREEN_WIDTH / width;
       this.setStyle({
         width: `${width}px`,
         height: `${height}px`,
@@ -97,13 +98,16 @@ export default {
       });
     },
     showMask () {
-      this.visiable = true;
+      this.visible = true;
     },
     handleClose () {
-      this.visiable = false;
+      this.visible = false;
     },
     setStyle (style = {}) {
-      this.maskImgStyle = Object.assign({}, this.maskImgStyle, style);
+      this.maskImgStyle = {
+        ...this.maskImgStyle,
+        ...style,
+      };
     },
   },
 };
@@ -129,7 +133,7 @@ export default {
 
 .mask-img {
   position: absolute;
-  z-index: 1002;
+  z-index: 1020;
 }
 
 .image-wall-scale-enter-active,

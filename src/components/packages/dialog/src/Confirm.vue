@@ -1,5 +1,5 @@
 <template>
-  <Modal @handleAfterHidden="handleAfterLeave" v-model="visiable">
+  <Modal @handleAfterHidden="handleAfterLeave" v-model="visible">
     <template v-slot:header>
       <div class="easychat-confirm-hedaer">
         <Icon height="24px" width="24px" :type="iconType" /> {{ title }}
@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       // 控制显示
-      visiable: false,
+      visible: false,
       // 标题
       title: '这是一个确认框',
       // 内容
@@ -57,7 +57,7 @@ export default {
     };
   },
   mounted () {
-    this.visiable = true;
+    this.visible = true;
   },
   computed: {
     textColor () {
@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     cancel () {
-      this.visiable = false;
+      this.visible = false;
       if (this.onCancel && typeof this.onCancel === 'function') {
         this.onCancel.call(this);
       }
@@ -94,10 +94,10 @@ export default {
         }
 
         if (isCloseModal === true) {
-          this.visiable = false;
+          this.visible = false;
         }
       } else {
-        this.visiable = false;
+        this.visible = false;
       }
     },
     handleAfterLeave () {
