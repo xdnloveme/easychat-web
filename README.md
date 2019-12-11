@@ -5,9 +5,11 @@
 + 服务端源码地址（server-source）:[easychat后台源码](https://github.com/xdnloveme/easychat)（koa2 + mysql ，orm层是*sequ*lize，自己搭的MVC架构）
 + 测试账号（Test Acount）:`admin` 密码: `123456`
 
-手机端扫码预览:![scan](https://github.com/xdnloveme/MarkdownPictureStore/blob/master/1576056911.png?raw=true)
+**手机端**可以直接扫如下二维码预览：
 
-作者注：此项目正在测试beta版本，后续会跟进开发，有些底层组件由于个人时间有限和一些特殊情况，开发比较粗糙，文档也没完善。有兴趣开发改进底层组件的欢迎pr改进或者提交issues.
+![scan](https://github.com/xdnloveme/MarkdownPictureStore/blob/master/1576056911.png?raw=true)
+
+<u>作者注：此项目正在测试beta版本，后续会跟进开发，有些底层组件由于个人时间有限和一些特殊情况，开发比较粗糙，文档也没完善。有兴趣开发改进底层组件的欢迎pr改进或者提交issues.</u>
 
 
 
