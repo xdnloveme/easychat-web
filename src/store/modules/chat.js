@@ -4,6 +4,10 @@ import { createChatEvents } from '@/socket/createSyncEvents';
 import router from '@/router';
 import { formatTimestamp } from '@/utils/utils';
 
+const mergePrivateList = () => {
+
+}
+
 const types = {
   // 初始化
   CHAT_INIT: 'CHAT_INIT',
@@ -133,7 +137,6 @@ const actions = {
 
       state.chatServer.emit('privateMessage', payload, (sendStatus, message) => {
         try {
-          console.log('返回的是', { payload, sendStatus, message });
           commit('CHAT_PRIVATE_SEND', { payload, sendStatus, message });
           resolve(sendStatus);
         } catch (e) {
@@ -248,7 +251,6 @@ const mutations = {
       payload.forEach(item => {
         if (item.sourceOpenId === this.state.publicInfo.openId) {
           const privateChat = addPrivateChat(state.privateChat, item, true);
-
           state.privateChat = handleMessageReceiveMine(privateChat, item);
         } else {
           // 别人发的，自己接收

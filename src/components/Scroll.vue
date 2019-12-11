@@ -167,7 +167,7 @@ export default {
     },
     contentStyle () {
       return {
-        transform: `translateY(${this.scrollTop}px)`,
+        transform: `translate3d(0, ${this.scrollTop}px, 0)`,
       };
     },
     // 是否超出边界

@@ -1,6 +1,6 @@
 // 私人聊天所有的订阅事件
 export const createChatEvents = (chatServer, action) => {
-  const { commit, dispatch } = action;
+  const { commit, dispatch, state } = action;
   // 好友请求列表获取
   chatServer.on('friendRequestList-received', list => {
     commit('CHAT_FRIEND_REQUEST_LIST', {
@@ -18,12 +18,15 @@ export const createChatEvents = (chatServer, action) => {
   });
 
   chatServer.on('privateMessage-init', payload => {
-    commit('CHAT_PRIVATE_INIT', payload);
-    const openId = payload.map(i => {
-      return i.sourceOpenId;
-    });
-    if (openId.length > 0) {
-      dispatch('addTips', { message: '以上为最后一次记录', openId });
+    // 只有在初始化的时候，才去派发任务，防止socket重连进行二次初始化
+    if (state.privateChat.length === 0) {
+      commit('CHAT_PRIVATE_INIT', payload);
+      const openId = payload.map(i => {
+        return i.sourceOpenId;
+      });
+      if (openId.length > 0) {
+        dispatch('addTips', { message: '以上为最后一次记录', openId });
+      }
     }
   });
 };
