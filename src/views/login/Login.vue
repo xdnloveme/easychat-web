@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="foot-operate">
-      <!-- <a href="https://github.com/xdnloveme" class="foot-line register-line-a">需要帮助</a> -->
-      <router-link to="/test" class="foot-line register-line-a">测试</router-link>
+      <a href="https://github.com/xdnloveme" class="foot-line register-line-a">需要帮助</a>
+      <!-- <router-link to="/test" class="foot-line register-line-a">测试</router-link> -->
       <router-link to="/register/active" class="foot-line register-line-a">还未激活？</router-link>
     </div>
   </div>

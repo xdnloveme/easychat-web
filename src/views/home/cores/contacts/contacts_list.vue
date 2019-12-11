@@ -16,7 +16,7 @@
       >
         <template v-slot:main>
           <div class="contacts-list-main">
-            <img class="contacts-list-avatar" :src="testIcon" />
+            <img class="contacts-list-avatar" :src="item.data.avatar" />
             <div class="contacts-name">{{ item.name }}</div>
           </div>
         </template>
@@ -27,7 +27,6 @@
 
 <script>
 import ChatListCell from '@/components/fragment/ChatListCell';
-import testIcon from '@/assets/icon/headIcon.jpeg';
 
 export default {
   name: 'contacts_list',
@@ -44,7 +43,6 @@ export default {
   },
   data () {
     return {
-      testIcon: testIcon,
       groupNode: [],
       currentNodeIndex: -1,
     };

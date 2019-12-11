@@ -202,8 +202,6 @@ export default new Vuex.Store({
       this.commit(types.PUBLICINFO_MODIFY, publicInfo);
       // 创建聊天socket服务器（客户端对象）
       this.commit(types.SOCKET_SERVER_CREATE);
-      // 初始化通讯录
-      this.dispatch('contacts/init');
       window.localStorage.setItem('EASYCHAT-TOKEN', token);
     },
     [types.PUBLICINFO_MODIFY] (state, publicInfo) {
@@ -218,6 +216,8 @@ export default new Vuex.Store({
       this.dispatch('chat/init', state.chatServer);
       // square广场模块初始化
       this.dispatch('square/init', state.chatServer);
+      // 初始化通讯录
+      this.dispatch('contacts/init', state.chatServer);
     },
     [types.SOCKET_SET_SERVER_ID] (state, id) {
       state.chatServerId = id;

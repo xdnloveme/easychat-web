@@ -31,6 +31,7 @@ export const createChatEvents = (chatServer, action) => {
   });
 };
 
+// 广场事件
 export const createSquareEvents = (chatServer, action) => {
   const { commit } = action;
 
@@ -72,3 +73,19 @@ export const createSquareEvents = (chatServer, action) => {
     chatServer.off('join-broadcast', joinBroadcast);
   };
 };
+
+// 通讯录列表
+export const createContactEvents = (chatServer, action) => {
+  const { commit } = action;
+
+  const contactsListUpdate = payload => {
+    console.log('更新了paylad', payload);
+    commit('CONTACTS_SET_LIST', payload);
+  }
+
+  chatServer.on('contactsList-update', contactsListUpdate);
+
+  return () => {
+    chatServer.off('contactsList-update', contactsListUpdate);
+  }
+}

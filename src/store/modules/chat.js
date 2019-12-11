@@ -4,10 +4,6 @@ import { createChatEvents } from '@/socket/createSyncEvents';
 import router from '@/router';
 import { formatTimestamp } from '@/utils/utils';
 
-const mergePrivateList = () => {
-
-}
-
 const types = {
   // 初始化
   CHAT_INIT: 'CHAT_INIT',

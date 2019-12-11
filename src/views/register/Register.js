@@ -172,31 +172,31 @@ export default {
     initStepValidate () {
       for (let i in this.validate_map) {
         for (let j = 0; j < this.validate_map[i].content.length; j++) {
-          var _validateMap = this.validate_map[i].content[j];
-          if (_validateMap.isBindVm) {
-            _validateMap.validate = _validateMap.validate.bind(this);
+          const validateMap = this.validate_map[i].content[j];
+          if (validateMap.isBindVm) {
+            validateMap.validate = validateMap.validate.bind(this);
           }
-          this.step_list[i].content[j].validateFun = _validateMap.validate;
+          this.step_list[i].content[j].validateFun = validateMap.validate;
         }
       }
     },
     initDebounce () {
-      const _currentStep = this.step_list[0].content[0];
-      const _currentStepMap = this.validate_map[0].content[0];
-      _currentStep['debounce'] = {
+      const currentStep = this.step_list[0].content[0];
+      const currentStepMap = this.validate_map[0].content[0];
+      currentStep['debounce'] = {
         duration: {
           time: 800,
           message: '正在验证...',
         },
         start: () => {
-          _currentStep.showVeryify = false;
-          _currentStep.validateFun = _currentStepMap.validate;
-          let result = _currentStep.validateFun();
+          currentStep.showVeryify = false;
+          currentStep.validateFun = currentStepMap.validate;
+          let result = currentStep.validateFun();
           if (!result.state) {
-            _currentStep.showVeryify = true;
+            currentStep.showVeryify = true;
             return false;
           }
-          _currentStep.validateFun = function () {
+          currentStep.validateFun = function () {
             return {
               message: '正在验证...',
               state: false,
@@ -204,11 +204,11 @@ export default {
           };
         },
         process: async () => {
-          let value = _currentStep.value;
+          let value = currentStep.value;
           const _result = await registerService.isUsernameCanRegister(value);
           if (!_result.state || !_result.data.isCanRegister) {
-            _currentStep.showVeryify = true;
-            _currentStep.validateFun = function () {
+            currentStep.showVeryify = true;
+            currentStep.validateFun = function () {
               return {
                 message: _result.message,
                 state: false,
@@ -216,35 +216,35 @@ export default {
             };
             return;
           }
-          _currentStep.validateFun = _currentStepMap.validate;
+          currentStep.validateFun = currentStepMap.validate;
         },
       };
     },
     setVeryify () {
-      var _arr = [];
-      for (var i = 0; i < this.step_list.length; i++) {
-        let arr = [];
-        for (var j = 0; j < this.step_list[i].content.length; j++) {
-          var _current = this.step_list[i].content[j];
-          if (!_current.validateFun) {
+      const veryifyArr = [];
+      for (let i = 0; i < this.step_list.length; i++) {
+        const arr = [];
+        for (let j = 0; j < this.step_list[i].content.length; j++) {
+          const current = this.step_list[i].content[j];
+          if (!current.validateFun) {
             throw new Error(
-              `您的步骤中id为"${_current.id}"的配置中有规则函数未定义，请在validate_map数据中填写您的规则函数`,
+              `您的步骤中id为"${current.id}"的配置中有规则函数未定义，请在validate_map数据中填写您的规则函数`,
             );
           }
           arr.push({
-            ..._current.validateFun(),
+            ...current.validateFun(),
           });
         }
-        _arr.push({
+        veryifyArr.push({
           nextState: this.isNext(arr),
           veryifyData: arr,
         });
       }
-      return _arr;
+      return veryifyArr;
     },
     isNext (arr) {
       let flag = true;
-      for (var i = 0; i < arr.length; i++) {
+      for (let i = 0; i < arr.length; i++) {
         if (!arr[i].state) {
           flag = false;
         }
@@ -280,10 +280,9 @@ export default {
       }
       this.submitProcess(data);
     },
-    submitProcess (_data) {
-      const _self = this;
+    submitProcess (payload) {
       let concat_data = [];
-      _data.forEach((element, index) => {
+      payload.forEach((element, index) => {
         concat_data = concat_data.concat(element.content);
       });
       const username = this.getValueByListId('username', concat_data);
@@ -303,17 +302,16 @@ export default {
       });
       submitT.show();
       data
-        .then(_res => {
+        .then(res => {
           submitT.destroy();
-          _self.$toast(_res.message).toast();
-          console.log('成功提交了', _res);
-          if (_res.data.isRegisterSuccess) {
-            _self.$router.push({ name: 'registerResult', params: { isSuccess: _res.state } });
+          this.$toast(res.message).toast();
+          if (res.data.isRegisterSuccess) {
+            this.$router.push({ name: 'registerResult', params: { isSuccess: res.state } });
           }
         })
         .catch(e => {
           submitT.destroy();
-          _self.$toast(e.message).toast();
+          this.$toast(e.message).toast();
         });
     },
     getValueByListId (id, list = []) {

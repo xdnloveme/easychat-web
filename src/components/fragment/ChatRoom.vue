@@ -69,7 +69,8 @@ export default {
       const maxHeight = DEFAULT_TEXTAREA_STYLE.maxHeight;
       const space = DEFAULT_SPACE.padding;
       const minHeight = DEFAULT_TEXTAREA_STYLE.minHeight;
-      return `calc(100vh - ${60 + this._getCommonHeightStyle(height, maxHeight, space, minHeight)}px)`;
+      const { SCREEN_HEIGHT } = this.$global;
+      return SCREEN_HEIGHT - 60 - this._getCommonHeightStyle(height, maxHeight, space, minHeight);
     },
   },
   watch: {
@@ -120,6 +121,7 @@ export default {
           }
           this.$emit('send', this.message);
           this.message = '';
+          this.textareaStyle = DEFAULT_TEXTAREA_STYLE;
           return;
         }
         this.message += '\r\n';

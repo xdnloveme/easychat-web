@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import ChatListCell from '@/components/fragment/ChatListCell';
 import FormBased from '@/components/fragment/FormBased';
 import EMask from '@/components/EMask';
@@ -118,7 +118,13 @@ export default {
   created () {
     this.getRecommendPeople();
   },
+  mounted () {
+    this.setAddPeopleCount({ type: 'clear'});
+  },
   methods: {
+    ...mapActions({
+      setAddPeopleCount: 'badge/setAddPeopleCount',
+    }),
     getStatus ({ isFinish, isAgreed, isAddBlackList, isExpired }) {
       if (isFinish) {
         if (isExpired === 1) {

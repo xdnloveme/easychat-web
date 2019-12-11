@@ -1,4 +1,5 @@
 import user from '@/service/user';
+import { createContactEvents } from '@/socket/createSyncEvents';
 
 const types = {
   INIT: 'INIT',
@@ -14,10 +15,11 @@ const getters = {};
 
 // actions
 const actions = {
-  async init (context) {
+  async init (context, chatServer) {
     const {
       data: { contactsList },
     } = await user.getContactsData(this.state.publicInfo.openId);
+    createContactEvents(chatServer, context);
     context.commit('CONTACTS_SET_LIST', contactsList);
   },
 };
@@ -25,7 +27,6 @@ const actions = {
 // mutations
 const mutations = {
   [types.CONTACTS_SET_LIST] (state, contactsList) {
-    console.log('----', contactsList);
     state.contactsList = contactsList.map(item => ({
       ...item.userInfo,
       isFriend: true,

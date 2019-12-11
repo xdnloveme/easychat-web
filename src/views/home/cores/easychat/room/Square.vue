@@ -54,14 +54,8 @@ export default {
       console.log('准备重新提交的条目', item);
     },
     handleSend (message, callback) {
-      const targetPublicInfo = this.contactsList.find(item => item.openId === this.openId);
-      if (targetPublicInfo) {
-        this.$toast('TA还不是你的通讯录好友');
-      }
       const payload = new Packet({
         message,
-        targetPublicInfo,
-        targetOpenId: this.openId,
         isShowName: true,
       });
       this.sendMessage(payload);

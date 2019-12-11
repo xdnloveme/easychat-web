@@ -24,11 +24,7 @@
     </Scroll>
     <div class="dict-nav-wrapper">
       <ul>
-        <li
-          :class="[dictIndex === $key ? 'current-dict' : '']"
-          :key="'dict' + $key"
-          v-for="(dict, $key) in dictArr"
-        >
+        <li :class="[dictIndex === $key ? 'current-dict' : '']" :key="'dict' + $key" v-for="(dict, $key) in dictArr">
           {{ dict }}
         </li>
       </ul>
@@ -59,7 +55,8 @@ export default {
       addPeopleCount: state => state.badge.addPeopleCount,
     }),
     listHeight () {
-      return 'calc(100vh - 122px - 46px)';
+      const { SCREEN_HEIGHT } = this.$global;
+      return SCREEN_HEIGHT - 122 - 46;
     },
     contactsListSource () {
       return this.getContactsList(this.getDictAndSort(this.contactsList));
@@ -246,4 +243,3 @@ export default {
   }
 }
 </style>
-

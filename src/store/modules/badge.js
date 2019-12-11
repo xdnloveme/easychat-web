@@ -40,13 +40,14 @@ const actions = {
     }
   },
   setAddPeopleCount (actions, { type }) {
-    console.log('进来了', type);
-    const { commit } = actions;
+    const { commit, state } = actions;
     if (type === 'add') {
       console.log('触发commit', commit);
-      commit('MODYIFY_ADDPEOPLE_BADGE_ADD', {});
+      commit('MODYIFY_ADDPEOPLE_BADGE_ADD');
+    } else if (type === 'clear') {
+      commit('MODYIFY_ADDPEOPLE_BADGE_REDUCE', state.addPeopleCount);
     } else {
-      commit('MODYIFY_ADDPEOPLE_BADGE_REDUCE', {});
+      commit('MODYIFY_ADDPEOPLE_BADGE_REDUCE', 1);
     }
   },
 };
@@ -74,13 +75,12 @@ const mutations = {
     }
     state.chat = currentChat;
   },
-  [types.MODYIFY_ADDPEOPLE_BADGE_ADD] (state, payload) {
-    console.log('我进来啦');
+  [types.MODYIFY_ADDPEOPLE_BADGE_ADD] (state) {
     state.addPeopleCount = state.addPeopleCount + 1;
   },
-  [types.MODYIFY_ADDPEOPLE_BADGE_REDUCE] (state) {
+  [types.MODYIFY_ADDPEOPLE_BADGE_REDUCE] (state, count) {
     if (state.addPeopleCount > 0) {
-      state.addPeopleCount = state.addPeopleCount - 1;
+      state.addPeopleCount = state.addPeopleCount - count;
     }
   },
 };

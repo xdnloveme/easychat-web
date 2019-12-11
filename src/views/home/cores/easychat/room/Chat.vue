@@ -95,8 +95,8 @@ export default {
     },
     handleSend (message) {
       const targetPublicInfo = this.contactsList.find(item => item.openId === this.openId);
-      if (targetPublicInfo) {
-        this.$toast('TA还不是你的通讯录好友');
+      if (!targetPublicInfo) {
+        this.$toast('TA还不是你的通讯录好友').toast();
       }
       const payload = new Packet({
         message,
