@@ -1,10 +1,14 @@
 # easychat-web
 简聊(easychat-web)✨✨，简单、完全开源的，轻量、一体化组件项目，有兴趣的可以pr一起改进这个项目
 
-+ 简聊H5在线预览（preview）:http://chat.tangyida.top
++ 简聊H5在线预览（preview）:http://chat.tangyida.top.
++ 手机端扫码预览（mobile-scan）:![scan](https://github.com/xdnloveme/MarkdownPictureStore/blob/master/1576056911.png?raw=true)
 + 服务端源码地址（server-source）:[easychat后台源码](https://github.com/xdnloveme/easychat)（koa2 + mysql ，orm层是*sequ*lize，自己搭的MVC架构）
 + 测试账号（Test Acount）:`admin` 密码: `123456`
-+ 作者注：此项目正在测试beta版本，后续会跟进开发，有些底层组件由于个人时间有限和一些特殊情况，开发比较粗糙，文档也没完善。有兴趣开发改进底层组件的欢迎pr改进或者提交issues.
+
+作者注：此项目正在测试beta版本，后续会跟进开发，有些底层组件由于个人时间有限和一些特殊情况，开发比较粗糙，文档也没完善。有兴趣开发改进底层组件的欢迎pr改进或者提交issues.
+
+
 
 ## 🖼 截图预览（Preview）
 
@@ -12,9 +16,13 @@
 
 ![preiview-image](https://github.com/xdnloveme/MarkdownPictureStore/blob/master/15760544133912.png?raw=true)
 
+
+
 ## 🦋 起源（Why）
 
 一直对实时通讯有偏爱，同时想巩固单人前后端项目一体化的能力，前端技术栈（Vue + Vue-cli 3 + socket.io.client），没有用到**第三方组件库**，希望从零开始开发H5底层组件，希望屏幕前的你可以加入进来改善项目。
+
+
 
 ## ✨特性（Features）
 
@@ -28,6 +36,8 @@
 + 自动化配置（auto）:剥离配置，达到配置=>构造组件的逻辑，利用Webpack和AST实现自动添加图标、页面可配置等效果。
 + 优化兼容性（polyfill）:优化各个底层组件在各大浏览器性能，整体兼容性提高。
 
+
+
 ## ⚙ 安装（Install）
 
 ```javascript
@@ -39,6 +49,8 @@ npm run serve
 ```
 
 记得开启服务端后台：[easychat后台](https://github.com/xdnloveme/easychat)服务，本地开发默认地址是`http://localhost:8080`
+
+
 
 ## 📖 文档（Doc）
 
