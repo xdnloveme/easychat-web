@@ -2,12 +2,20 @@
   <div class="easy-chat-wrapper">
     <Navigation></Navigation>
     <RouteTransition>
-      <keep-alive :include="keepAliveRoutes">
+      <template v-if="keepAliveRoutes !== ''">
+        <keep-alive :include="keepAliveRoutes">
+          <router-view
+            :style="viewStyle"
+            :class="['easy-chat-router-view', 'show-nav', isRenderTabbar ? 'view-space' : '']"
+          />
+        </keep-alive>
+      </template>
+      <template v-else>
         <router-view
           :style="viewStyle"
           :class="['easy-chat-router-view', 'show-nav', isRenderTabbar ? 'view-space' : '']"
         />
-      </keep-alive>
+      </template>
     </RouteTransition>
   </div>
 </template>
@@ -16,7 +24,6 @@
 import Vue from 'vue';
 import { mapState, mapMutations } from 'vuex';
 import Navigation from '@/components/layout/Navigation';
-
 
 export default {
   name: 'BasicLayout',
@@ -80,7 +87,6 @@ export default {
 };
 </script>
 
-
 <style>
 body,
 html {
@@ -110,7 +116,7 @@ input {
   top: 0px;
   bottom: 0px;
   width: 100%;
-  height: 100%;  
+  height: 100%;
 }
 
 .easy-chat-router-view {

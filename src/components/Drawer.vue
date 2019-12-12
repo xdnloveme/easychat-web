@@ -59,9 +59,7 @@ export default {
     document.body.appendChild(this.$refs.drawer);
   },
   beforeDestroy () {
-    if (this.$refs.drawer) {
-      document.body.removeChild(this.$refs.drawer);
-    }
+    document.body.removeChild(this.$refs.drawer);
   },
   computed: {
     animationName () {

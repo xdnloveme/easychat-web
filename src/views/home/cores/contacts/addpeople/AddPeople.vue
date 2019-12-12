@@ -115,10 +115,8 @@ export default {
       this.showResult = false;
     },
   },
-  created () {
-    this.getRecommendPeople();
-  },
   mounted () {
+    this.getRecommendPeople();
     this.setAddPeopleCount({ type: 'clear'});
   },
   methods: {

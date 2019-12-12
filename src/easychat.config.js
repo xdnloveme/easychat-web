@@ -97,7 +97,6 @@ export default {
           meta: {
             title: '个人信息编辑',
             requiresAuth: true,
-            keepAlive: true,
           },
         },
         {
@@ -107,7 +106,6 @@ export default {
           meta: {
             title: '设置',
             requiresAuth: true,
-            keepAlive: true,
           },
         },
         {
@@ -117,7 +115,7 @@ export default {
           meta: {
             title: '添加好友',
             requiresAuth: true,
-            keepAlive: true,
+            // keepAlive: true,
           },
         },
         {

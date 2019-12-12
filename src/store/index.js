@@ -234,6 +234,7 @@ export default new Vuex.Store({
     // 动态添加需要缓存的路由
     [types.DYNAMIC_KEEPALIVE_ROUTES] (state) {
       const filterKeepAlive = findKeepAliveRoutes(router.options.routes);
+      console.log(filterKeepAlive);
       // 记得把需要keepAlive缓存起来的路由组件映射到全局的state状态中去，每次登陆的时候去设定需要缓存的内容
       state.keepAliveRoutes = filterKeepAlive
         .map(eachRoute => {
