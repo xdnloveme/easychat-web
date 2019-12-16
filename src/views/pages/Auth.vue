@@ -24,6 +24,7 @@ export default {
       isPending: false,
       isShowFailure: false,
       countDown: 2,
+      isDisconnect: false,
       errorOptions: {
         title: '验证失败',
         desc: '',
@@ -39,8 +40,12 @@ export default {
   methods: {
     ...mapActions({
       authToken: 'authToken',
+      logout: 'logout',
     }),
     btnOperate () {
+      if (this.isDisconnect) {
+        return location.href = 'https://github.com/xdnloveme';
+      }
       this.backToLogin();
     },
     backToLogin () {
@@ -49,7 +54,7 @@ export default {
       });
     },
     async init () {
-      console.log('进来了');
+      console.log('开始验证账号token....');
       this.redirect = this.$route.query.redirect_url || '/home/easychat';
       if (!this.$store.state.token) {
         return this.backToLogin();
@@ -60,12 +65,12 @@ export default {
           if (!state) {
             this.isShowFailure = true;
             const message = data.message;
-            this.setDesc(`${message || 'token验证失败'}，${this.countDown}秒后返回登录页面`);
+            this.setOptions('desc', `${message || 'token验证失败'}，${this.countDown}秒后返回登录页面`);
 
             this.timer = setInterval(() => {
               this.countDown = this.countDown - 1;
 
-              this.setDesc(`${message || 'token验证失败'}，${this.countDown} 秒后返回登录页面`);
+              this.setOptions('desc', `${message || 'token验证失败'}，${this.countDown} 秒后返回登录页面`);
 
               if (this.countDown < 0) {
                 clearInterval(this.timer);
@@ -80,14 +85,27 @@ export default {
           });
         })
         .catch(err => {
+          this.isShowFailure = true;
           this.$toast(err.message).toast();
+          this.setOptions(['desc', 'title', 'button'], [`服务器好像开小差了`, '无法连接到服务', {
+            name: '去Github提issues',
+          }]);
+          this.isDisconnect = true;
         })
         .finally(() => {
           this.isPending = false;
         });
     },
-    setDesc (msg) {
-      this.errorOptions.desc = msg;
+    setOptions (keys, value) {
+      if (Array.isArray(keys)) {
+        Object.values(keys).forEach((key, i) => {
+          if (Array.isArray(value)) {
+            this.errorOptions[key] = value[i] || '222';
+          }
+        });
+      } else {
+        this.errorOptions[keys] = value;
+      }
     },
   },
   beforeDestroy () {
@@ -114,4 +132,3 @@ export default {
   }
 }
 </style>
-

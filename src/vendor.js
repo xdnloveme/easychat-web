@@ -4,6 +4,7 @@ import Dialog from '@/components/packages/dialog/index.js';
 import Axios from '@/api/config.js';
 import NextTransitAfter from '@/utils/next-transit-after';
 import service from '@/service';
+import './registerServiceWorker';
 
 Vue.config.productionTip = false
 
@@ -15,6 +16,5 @@ Vue.prototype.$toast = Toast; // 冒泡信息框
 
 Vue.prototype.$axios = Axios;
 
-// 所有业务模块
+// 所有业务模块api
 Vue.prototype.$service = service;
-

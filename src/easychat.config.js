@@ -1,19 +1,19 @@
 import BasicLayout from '@/layouts/BasicLayout';
-import MineInfoEdit from '@/views/home/mine/MineInfoEdit';
-import Setting from '@/views/home/mine/Setting';
-import AddPeople from '@/views/home/cores/contacts/addpeople/AddPeople';
+import MineInfoEdit from '@/views/MineInfoEdit';
+import Setting from '@/views/Setting';
+import AddPeople from '@/views/AddPeople';
 import UserCard from '@/views/pages/UserCard';
 
 import registerResult from '@/views/pages/RegisterResult';
-import Login from '@/views/login/Login';
+import Login from '@/views/Login';
 import registerActive from '@/views/pages/RegisterActive';
 import NotFoundComponent from '@/views/pages/404/NotFoundComponent';
 import Auth from '@/views/pages/Auth';
 
-import EasyChat from '@/views/home/cores/easychat/EasyChat';
-import Mine from '@/views/home/cores/mine/Mine';
-import Contacts from '@/views/home/cores/contacts/Contacts';
-import Square from '@/views/home/cores/square/Square';
+import EasyChat from '@/views/EasyChat';
+import Mine from '@/views/Mine';
+import Contacts from '@/views/Contacts';
+import Square from '@/views/Square';
 
 import comment from '@/assets/icon/tabbar/comment.svg';
 import comment_select from '@/assets/icon/tabbar/comment_fill.svg';
@@ -139,7 +139,7 @@ export default {
         {
           path: '/chat',
           name: 'Chat',
-          component: () => import('@/views/home/cores/easychat/room/Chat'),
+          component: () => import('@/views/Chat'),
           meta: {
             title: function () {
               return '测试';
@@ -150,7 +150,7 @@ export default {
         {
           path: '/chat/square',
           name: 'chatSquare',
-          component: () => import('@/views/home/cores/easychat/room/Square'),
+          component: () => import('@/views/ChatSquare'),
           meta: {
             title: '广场',
             requiresAuth: true,
@@ -162,7 +162,7 @@ export default {
           meta: {
             title: '注册',
           },
-          component: () => import('@/views/register/'),
+          component: () => import('@/views/Register'),
         },
         {
           path: '/register/active',
@@ -183,7 +183,7 @@ export default {
         {
           path: '/avatar',
           name: 'avatar',
-          component: () => import('@/views/avatar'),
+          component: () => import('@/views/Avatar'),
           meta: {
             title: '头像选择',
             requiresAuth: true,

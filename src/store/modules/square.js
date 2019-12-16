@@ -43,7 +43,6 @@ const actions = {
     if (!rootState.chatServer || !chatServer) {
       return;
     }
-    console.log('触发初始化', chatServer, rootState);
     context.commit('SQUARE_INIT', chatServer);
   },
   sendMessage (context, payload) {
@@ -51,8 +50,10 @@ const actions = {
   },
   join (context) {
     const { commit, state, rootState } = context;
-    clearSquareEvents = createSquareEvents(state.chatServer, context);
-    commit('SQUARE_JOIN', rootState.publicInfo);
+    if (!clearSquareEvents) {
+      clearSquareEvents = createSquareEvents(state.chatServer, context);
+      commit('SQUARE_JOIN', rootState.publicInfo);
+    }
   },
   leave (context) {
     context.commit('SQUARE_LEAVE');
@@ -83,9 +84,6 @@ const mutations = {
   },
   [types.SQUARE_LEAVE_BROADCAST] (state, { userCounts }) {
     state.userCounts = userCounts;
-    this.dispatch('nav/setNavInfo', {
-      title: `广场（${userCounts}人在线）`,
-    });
   },
   [types.SQUARE_SEND_MESSAGE_REPLY] (state, payload) {
     const chatList = [...state.chatList];
@@ -111,11 +109,7 @@ const mutations = {
     state.chatServer.emit('sendMessage', state.socket_id, payload);
   },
   [types.SQUARE_JOIN_BROADCAST] (state, { userCounts }) {
-    if (!state.chatServer) return;
     state.userCounts = userCounts;
-    this.dispatch('nav/setNavInfo', {
-      title: `广场（${userCounts}人在线）`,
-    });
   },
   [types.SQUARE_ADD_TIPS] (state, payload) {
     state.chatList.push(payload);
@@ -130,13 +124,14 @@ const mutations = {
   // 离开房间
   [types.SQUARE_LEAVE] (state) {
     state.chatServer.emit('leave', state.memberInfo, res => {
-      if (clearSquareEvents) {
+      if (clearSquareEvents && typeof clearSquareEvents === 'function') {
         // 触发销毁
         clearSquareEvents();
+        clearSquareEvents = null;
       }
     });
 
-    // state.chatServer = null;
+    state.userCounts = 0;
     state.socket_id = null;
   },
 };

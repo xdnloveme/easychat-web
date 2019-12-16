@@ -1,3 +1,19 @@
+const TerserPlugin = require('terser-webpack-plugin');
+
+const plugins = [];
+
+if (process.env.NODE_ENV === 'development') {
+  plugins.concat(
+    new TerserPlugin({
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    }),
+  );
+}
+
 module.exports = {
   css: {
     loaderOptions: {
@@ -6,19 +22,22 @@ module.exports = {
       },
     },
   },
+  // 其他配置
+  configureWebpack: {
+    plugins,
+  },
+  // pwa 配置
   pwa: {
     name: 'EasyChat',
-    themeColor: '#4DBA87',
-    msTileColor: '#000000',
+    themeColor: '#4585f4',
+    msTileColor: '#ffffff',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'transparent',
+    appleMobileWebAppStatusBarStyle: 'black-translucent',
 
     // configure the workbox plugin
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      // swSrc is required in InjectManifest mode.
-      swSrc: 'src/service-worker.js',
-      // ...other Workbox options...
+      swSrc: './src/service-worker.js',
     },
     iconPaths: {
       favicon32: 'img/icons/favicon-32x32.png',
@@ -28,6 +47,7 @@ module.exports = {
       msTileImage: 'img/icons/msapplication-icon-144x144.png',
     },
   },
+  // 开发服务器代理
   devServer: {
     proxy: {
       '/api': {

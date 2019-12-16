@@ -19,12 +19,11 @@ export default {
   },
   methods: {
     isconfirmLogout () {
-      const _self = this;
       this.$confirm({
         title: '退出登录',
         content: '确定要退出登录状态吗？（您将回到登录界面）',
-        onConfirm () {
-          _self.logout();
+        onConfirm: () => {
+          this.logout();
         },
         onCancel () {
           console.log('cancel ...');

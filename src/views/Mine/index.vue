@@ -12,7 +12,7 @@
 import { mapState } from 'vuex';
 import Vue from 'vue';
 import ChatListCell from '@/components/fragment/ChatListCell';
-import MineInfoCell from '@/views/home/components/mine_info_cell';
+import MineInfoCell from './components/MineInfoCell';
 
 const INIT_LIST = [
   {

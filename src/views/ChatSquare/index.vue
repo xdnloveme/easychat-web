@@ -1,13 +1,13 @@
 <template>
   <div>
-    <ChatRoom @avatarClick="handleAvatarClick" @send="handleSend" @resend="handleReSend" :chatList="chatList"/>
+    <ChatRoom @avatarClick="handleAvatarClick" @send="handleSend" @resend="handleReSend" :chatList="chatList" />
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client';
 import { mapState, mapActions } from 'vuex';
-import ChatRoom from '@/components/fragment/ChatRoom'
+import ChatRoom from '@/components/fragment/ChatRoom';
 import chatRoom from '@/socket/chatRoom';
 import Packet from '@/utils/packet';
 
@@ -17,7 +17,7 @@ const MESSAGE_TEMP = {
   isMine: true,
   isEmiting: true,
   isFailed: false,
-}
+};
 
 export default {
   name: 'chatSquare',
@@ -27,17 +27,25 @@ export default {
   data () {
     return {
       isWatchingInfo: false,
-    }
+    };
   },
   created () {
-    this.initSocket();
+    this.init();
   },
   computed: {
     ...mapState({
-      publicInfo: (state) => state.publicInfo,
-      chatList: (state) => state.square.chatList,
+      publicInfo: state => state.publicInfo,
+      chatList: state => state.square.chatList,
       contactsList: state => state.contacts.contactsList,
+      userCounts: state => state.square.userCounts,
     }),
+  },
+  watch: {
+    userCounts (value) {
+      this.setNavInfo({
+        title: `广场（${value}人在线）`,
+      });
+    },
   },
   methods: {
     ...mapActions({
@@ -46,8 +54,9 @@ export default {
       leave: 'square/leave',
       addTips: 'square/addTips',
       remove: 'square/remove',
+      setNavInfo: 'nav/setNavInfo',
     }),
-    initSocket () {
+    init () {
       this.join();
     },
     handleReSend (item) {
@@ -78,17 +87,14 @@ export default {
     const history = {
       isTip: true,
       message: '以上为历史记录',
-    }
+    };
     if (this.chatList.length > 0) {
-      this.remove(history)
+      this.remove(history);
       this.addTips(history);
     }
     this.leave();
   },
-}
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
-
+<style scoped lang="scss"></style>
