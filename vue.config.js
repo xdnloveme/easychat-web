@@ -2,7 +2,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const plugins = [];
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   plugins.concat(
     new TerserPlugin({
       terserOptions: {
