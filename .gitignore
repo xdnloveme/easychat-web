@@ -19,3 +19,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Publish Config
+.dockerignore
+nginx.conf
+Dockerfile
