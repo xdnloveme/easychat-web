@@ -1,9 +1,9 @@
 const TerserPlugin = require('terser-webpack-plugin');
 
-const plugins = [];
+const TerserPluginConfig = [];
 
 if (process.env.NODE_ENV === 'production') {
-  plugins.concat(
+  TerserPluginConfig.push(
     new TerserPlugin({
       terserOptions: {
         compress: {
@@ -24,7 +24,9 @@ module.exports = {
   },
   // 其他配置
   configureWebpack: {
-    plugins,
+    plugins: [
+      ...TerserPluginConfig,
+    ],
   },
   // pwa 配置
   pwa: {
