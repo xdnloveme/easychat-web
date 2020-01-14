@@ -1,6 +1,11 @@
+const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-
+const AutoIconCreated = require('./src/utils/auto-icon-created');
 const TerserPluginConfig = [];
+
+const resolve = currentPath => {
+  return path.resolve(__dirname, './src/', currentPath);
+};
 
 if (process.env.NODE_ENV === 'production') {
   TerserPluginConfig.push(
@@ -26,6 +31,11 @@ module.exports = {
   configureWebpack: {
     plugins: [
       ...TerserPluginConfig,
+      // 自动生成ICON组件的插件，还有一些格式问题，未进行修复，后续进行修正
+      new AutoIconCreated({
+        template: './components/template/IconTemp.vue',
+        output: './components/Icon.vue',
+      }),
     ],
   },
   // pwa 配置
@@ -61,6 +71,9 @@ module.exports = {
         ws: true,
         changeOrigin: true,
       },
+    },
+    watchOptions: {
+      ignored: [resolve('./components/Icon.vue')],
     },
   },
 };
