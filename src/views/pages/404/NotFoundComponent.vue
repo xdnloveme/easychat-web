@@ -2,10 +2,12 @@
   <div>
     <div class="not-found-container">
       <h2 class="not-found-title">404</h2>
-      <img class="not-found-img" :src="imgNotFound"/>
+      <img class="not-found-img" :src="imgNotFound" />
     </div>
     <div class="not-found-desc">
-      <p class="not-found-desc-p">页面飞走了，找不到你需要的页面，{{count}}秒后自动返回主页，或者直接点击返回。</p>
+      <p class="not-found-desc-p">
+        页面飞走了，找不到你需要的页面，{{ count }}秒后自动返回主页，或者直接点击返回。
+      </p>
     </div>
     <div class="not-found-return">
       <router-link :to="'/home/easychat'" replace class="not-found-return-btn">返回首页</router-link>
@@ -15,7 +17,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import notFound from '@/assets/icon/404/404.svg';
+import notFound from '@/assets/icon/404/notFound.svg';
 
 export default {
   name: 'NotFoundComponent',
@@ -23,7 +25,7 @@ export default {
     return {
       imgNotFound: notFound,
       count: 5,
-    }
+    };
   },
   mounted () {
     this.timer = setInterval(() => {
@@ -33,7 +35,7 @@ export default {
           params: {
             tabbarId: 'easychat',
           },
-        })
+        });
         clearInterval(this.timer);
         return;
       }
@@ -43,7 +45,7 @@ export default {
   beforeDestroy () {
     this.timer && clearInterval(this.timer);
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -65,7 +67,7 @@ export default {
 
 .not-found-desc {
   padding: 0 55px;
-  font-size: .88em;
+  font-size: 0.88em;
   text-align: center;
   margin-top: 10px;
 
@@ -90,4 +92,3 @@ export default {
   }
 }
 </style>
-

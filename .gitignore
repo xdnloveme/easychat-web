@@ -21,5 +21,6 @@ yarn-error.log*
 *.sw?
 
 # Publish Config
+.dockerignore
 nginx.conf
 Dockerfile

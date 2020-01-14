@@ -8,71 +8,18 @@
     </template>
   </span>
 </template>
+
 <script>
 import addpeople from '@/assets/icon/addpeople_fill.svg';
-import square_fill from '@/assets/icon/tabbar/square_fill.svg';
-import square from '@/assets/icon/tabbar/square.svg';
-import mine_fill from '@/assets/icon/tabbar/mine_fill.svg';
-import mine from '@/assets/icon/tabbar/mine.svg';
-import comment_fill from '@/assets/icon/tabbar/comment_fill.png';
-import comment from '@/assets/icon/tabbar/comment.png';
-import barrage_fill from '@/assets/icon/tabbar/barrage_fill.png';
-import barrage from '@/assets/icon/tabbar/barrage.png';
-import empty from '@/assets/icon/page/empty.svg';
-import success_1 from '@/assets/icon/default/success_1.svg';
-import success from '@/assets/icon/default/success.svg';
-import refused from '@/assets/icon/default/refused.svg';
-import notFound from '@/assets/icon/404/notFound.svg';
-import warning from '@/assets/icon/warning.png';
-import warn from '@/assets/icon/warn.svg';
-import user from '@/assets/icon/user.svg';
-import square_chat from '@/assets/icon/square_chat.svg';
-import search from '@/assets/icon/search.png';
-import right from '@/assets/icon/right.png';
-import question from '@/assets/icon/question.svg';
-import more from '@/assets/icon/more.svg';
-import lock from '@/assets/icon/lock.svg';
-import headIcon from '@/assets/icon/headIcon.jpeg';
-import error from '@/assets/icon/error.svg';
-import emoji from '@/assets/icon/emoji.svg';
-import cry2 from '@/assets/icon/cry2.svg';
-import back from '@/assets/icon/back.png';
-import addpeople_fill from '@/assets/icon/addpeople_fill.svg';
-import add from '@/assets/icon/add.svg';
+
 const ICON_MAP = {
-  add: add,
-  addpeople_fill: addpeople_fill,
-  back: back,
-  cry2: cry2,
-  emoji: emoji,
-  error: error,
-  headIcon: headIcon,
-  lock: lock,
-  more: more,
-  question: question,
-  right: right,
-  search: search,
-  square_chat: square_chat,
-  user: user,
-  warn: warn,
-  warning: warning,
-  notFound: notFound,
-  refused: refused,
-  success: success,
-  success_1: success_1,
-  empty: empty,
-  barrage: barrage,
-  barrage_fill: barrage_fill,
-  comment: comment,
-  comment_fill: comment_fill,
-  mine: mine,
-  mine_fill: mine_fill,
-  square: square,
-  square_fill: square_fill,
+  addpeople: addpeople,
 };
+
 const ICON_SP_MAP = {
   'loading-spining': 'loading-spining',
 };
+
 export default {
   name: 'Icon',
   props: {
@@ -96,13 +43,11 @@ export default {
       if (!this.height && !this.width) {
         return {};
       }
-
       return {
         height: typeof this.height === 'number' ? `${this.height}px` : this.height,
         width: typeof this.width === 'number' ? `${this.width}px` : this.width,
       };
     },
-
     iconSrc () {
       if (ICON_MAP[this.type]) {
         return ICON_MAP[this.type];
@@ -114,34 +59,29 @@ export default {
 
       return '';
     },
-
     isSp () {
       if (ICON_SP_MAP[this.type]) {
         return true;
       }
-
       return false;
     },
-
     computedSize () {
       let spClass = '';
-
       if (this.isSp) {
         spClass = ICON_SP_MAP[this.type];
       }
-
       const range = ['large', 'mini', 'small'];
-
       if (this.size === 'normal' || !this.size || !range.some(name => name === this.size)) {
         return spClass;
       }
-
       return `icon-${this.size}-size ${spClass}`;
     },
   },
 };
 </script>
-<style lang="scss">
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
 .icon-img-wrapper {
   line-height: 1;
   vertical-align: text-top;
