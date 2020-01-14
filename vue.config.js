@@ -32,10 +32,10 @@ module.exports = {
     plugins: [
       ...TerserPluginConfig,
       // 自动生成ICON组件的插件，还有一些格式问题，未进行修复，后续进行修正
-      new AutoIconCreated({
-        template: './components/template/IconTemp.vue',
-        output: './components/Icon.vue',
-      }),
+      // new AutoIconCreated({
+      //   template: './components/template/IconTemp.vue',
+      //   output: './components/Icon.vue',
+      // }),
     ],
   },
   // pwa 配置
