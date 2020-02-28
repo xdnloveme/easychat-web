@@ -33,12 +33,12 @@ const types = {
 const getTabbarRoutes = async routes => {
   let tabbarRoutes = {};
   for (let i = 0; i < routes.length; i++) {
-    const { component, path, children = [] } = routes[i];
+    const { component, path, children = [], name } = routes[i];
+    console.log(routes[i]);
     if (component === TabbarLayout) {
       tabbarRoutes[path] = children;
     } else if (typeof component === 'function') {
-      const modules = await component();
-      if (modules.default === TabbarLayout) {
+      if (name === 'home') {
         tabbarRoutes[path] = children;
       }
     }
@@ -107,6 +107,7 @@ export default new Vuex.Store({
       const { options } = router;
       const { routes } = options;
       const tabbarRoutes = await getTabbarRoutes(routes);
+      console.log('tabbarRoutes', tabbarRoutes);
       commit(types.INIT_TABBAR, { tabbarRoutes });
     },
     async login (context, { username, password }) {

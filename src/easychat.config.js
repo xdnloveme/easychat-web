@@ -1,18 +1,9 @@
-import BasicLayout from '@/layouts/BasicLayout';
-import MineInfoEdit from '@/views/MineInfoEdit';
-import Setting from '@/views/Setting';
-import AddPeople from '@/views/AddPeople';
-import UserCard from '@/views/pages/UserCard';
-
 import registerResult from '@/views/pages/RegisterResult';
-import Login from '@/views/Login';
-import registerActive from '@/views/pages/RegisterActive';
 import NotFoundComponent from '@/views/pages/404/NotFoundComponent';
 import Auth from '@/views/pages/Auth';
 
 import EasyChat from '@/views/EasyChat';
 import Mine from '@/views/Mine';
-import Contacts from '@/views/Contacts';
 import Square from '@/views/Square';
 
 import comment from '@/assets/icon/tabbar/comment.svg';
@@ -28,7 +19,7 @@ export default {
   routes: [
     {
       path: '/',
-      component: BasicLayout,
+      component: () => import( '@/layouts/BasicLayout'),
       children: [
         {
           path: '/',
@@ -36,14 +27,14 @@ export default {
         },
         {
           path: '/home',
-          component: () => import('@/layouts/TabbarLayout'),
+          component: () => import(/* webpackChunkName: "home.chunk" */'@/layouts/TabbarLayout'),
           redirect: '/home/easychat',
           name: 'home',
           children: [
             {
               path: 'easychat',
               name: 'easychat',
-              component: EasyChat,
+              component: () => import(/* webpackChunkName: "easychat.chunk" */'@/views/EasyChat'),
               meta: {
                 requiresAuth: true,
                 title: '简聊',
@@ -55,7 +46,7 @@ export default {
             {
               path: 'contacts',
               name: 'contacts',
-              component: Contacts,
+              component: () => import(/* webpackChunkName: "contacts.chunk" */'@/views/Contacts'),
               meta: {
                 requiresAuth: true,
                 title: '通讯录',
@@ -67,7 +58,7 @@ export default {
             {
               path: 'square',
               name: 'square',
-              component: Square,
+              component: () => import(/* webpackChunkName: "square.chunk" */'@/views/Square'),
               meta: {
                 requiresAuth: true,
                 title: '广场',
@@ -79,7 +70,7 @@ export default {
             {
               path: 'mine',
               name: 'mine',
-              component: Mine,
+              component: () => import(/* webpackChunkName: "mine.chunk" */'@/views/Mine'),
               meta: {
                 requiresAuth: true,
                 title: '我的',
@@ -93,7 +84,7 @@ export default {
         {
           path: '/mine/edit',
           name: 'MineInfoEdit',
-          component: MineInfoEdit,
+          component: () => import(/* webpackChunkName: "mineInfo-edit.chunk" */ '@/views/MineInfoEdit/index.vue'),
           meta: {
             title: '个人信息编辑',
             requiresAuth: true,
@@ -102,7 +93,7 @@ export default {
         {
           path: '/mine/setting',
           name: 'Setting',
-          component: Setting,
+          component: () => import(/* webpackChunkName: "setting.chunk" */ '@/views/Setting/index.vue'),
           meta: {
             title: '设置',
             requiresAuth: true,
@@ -111,7 +102,7 @@ export default {
         {
           path: '/contacts/addPeople',
           name: 'AddPeople',
-          component: AddPeople,
+          component: () => import(/* webpackChunkName: "add-people.chunk" */'@/views/AddPeople'),
           meta: {
             title: '添加好友',
             requiresAuth: true,
@@ -121,7 +112,7 @@ export default {
         {
           path: '/userCard/:userInfo',
           name: 'UserCard',
-          component: UserCard,
+          component: () => import(/* webpackChunkName: "user-card.chunk" */'@/views/pages/UserCard'),
           meta: {
             title: '详细资料',
             requiresAuth: true,
@@ -130,7 +121,7 @@ export default {
         {
           path: '/addPeopleRequest',
           name: 'AddPeopleRequest',
-          component: () => import('@/views/pages/AddPeopleRequest'),
+          component: () => import(/* webpackChunkName: "add-people-request.chunk" */'@/views/pages/AddPeopleRequest'),
           meta: {
             title: '好友请求',
             requiresAuth: true,
@@ -139,7 +130,7 @@ export default {
         {
           path: '/chat',
           name: 'Chat',
-          component: () => import('@/views/Chat'),
+          component: () => import(/* webpackChunkName: "chat.chunk" */'@/views/Chat'),
           meta: {
             title: function () {
               return '测试';
@@ -150,7 +141,7 @@ export default {
         {
           path: '/chat/square',
           name: 'chatSquare',
-          component: () => import('@/views/ChatSquare'),
+          component: () => import(/* webpackChunkName: "chat-square.chunk" */'@/views/ChatSquare'),
           meta: {
             title: '广场',
             requiresAuth: true,
@@ -162,12 +153,12 @@ export default {
           meta: {
             title: '注册',
           },
-          component: () => import('@/views/Register'),
+          component: () => import(/* webpackChunkName: "register.chunk" */'@/views/Register'),
         },
         {
           path: '/register/active',
           name: 'registerActive',
-          component: registerActive,
+          component: () => import(/* webpackChunkName: "register-active.chunk" */'@/views/pages/RegisterActive'),
           meta: {
             title: '激活',
           },
@@ -175,7 +166,7 @@ export default {
         {
           path: '/test',
           name: 'test',
-          component: () => import('@/views/Test'),
+          component: () => import(/* webpackChunkName: "test.chunk" */'@/views/Test'),
           meta: {
             title: '测试页面',
           },
@@ -183,7 +174,7 @@ export default {
         {
           path: '/avatar',
           name: 'avatar',
-          component: () => import('@/views/Avatar'),
+          component: () => import(/* webpackChunkName: "avatar.chunk" */'@/views/Avatar'),
           meta: {
             title: '头像选择',
             requiresAuth: true,
@@ -194,7 +185,7 @@ export default {
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: () =>  import(/* webpackChunkName: "login.chunk" */'@/views/Login'),
     },
     {
       path: '/register/result',
