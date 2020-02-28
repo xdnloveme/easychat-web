@@ -82,6 +82,7 @@ const mutations = {
   },
 
   [types.SET_NAV_RIGHT] (state, rightOptions) {
+    console.log('触发', rightOptions);
     state.rightOptions = {
       ...state.rightOptions,
       ...rightOptions,

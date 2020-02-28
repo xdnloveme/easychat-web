@@ -91,7 +91,7 @@ export default {
   methods: {
     eachInit () {
       this.$store.commit('nav/SET_NAV_RIGHT', {
-        icon: 'addpeople',
+        icon: 'addpeople_fill',
         badge: this.addPeopleCount,
         operate: () => {
           this.$router.push({

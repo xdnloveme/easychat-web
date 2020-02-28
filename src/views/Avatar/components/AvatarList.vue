@@ -57,7 +57,7 @@ export default {
     .avatar-item-wrapper {
       padding: 8px;
       width: 25%;
-      height: 100px;
+      height: calc(25vw - 4.5px);
 
       &:last-child {
         margin-bottom: 60px;
