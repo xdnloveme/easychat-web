@@ -18,8 +18,7 @@
 </template>
 
 <script>
-import { Modal } from 'easychat-ui';
-import { Button } from 'easychat-ui';
+import { Modal, Button } from 'easychat-ui';
 import Icon from '@/components/Icon';
 
 export default {

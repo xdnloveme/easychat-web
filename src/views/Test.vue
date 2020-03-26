@@ -39,11 +39,7 @@
 
 <script>
 // 测试页面（仅供参考）
-import { Scroll } from 'easychat-ui';
-import Animate from '@/utils/animate';
-import Picker from '@/components/fragment/Picker';
-import PickerArea from '@/components/fragment/PickerArea';
-import PickerDate from '@/components/fragment/PickerDate';
+import { Scroll, Picker, PickerArea, PickerDate } from 'easychat-ui';
 import Success from '@/components/fragment/Success';
 
 const DEFAULT_OPTIONS = {
