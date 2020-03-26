@@ -28,7 +28,7 @@
 <script>
 import ChatRoomItem from './ChatRoomItem';
 import Icon from '@/components/Icon';
-import Scroll from '@/components/Scroll';
+import { Scroll } from 'easychat-ui';
 import { isNullAll } from '@/utils/common';
 import { mapActions } from 'vuex';
 

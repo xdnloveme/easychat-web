@@ -38,9 +38,9 @@
 <script>
 import { mapState } from 'vuex';
 import pinyin from 'pinyin';
+import { Scroll } from 'easychat-ui';
 import search from '@/assets/icon/search.svg';
 import ContactsList from './components/ContactsList';
-import Scroll from '@/components/Scroll';
 
 export default {
   name: 'contacts',

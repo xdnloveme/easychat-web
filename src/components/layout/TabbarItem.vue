@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Badge from '@/components/Badge';
+import { Badge } from 'easychat-ui';
 
 export default {
   name: 'TabbarItem',

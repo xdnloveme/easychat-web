@@ -56,8 +56,7 @@
 </template>
 
 <script>
-import Divider from '@/components/Divider';
-import Button from '@/components/Button';
+import { Divider, Button } from 'easychat-ui';
 import { mapActions, mapMutations, mapState } from 'vuex';
 
 export default {

@@ -1,36 +1,25 @@
 <template>
   <Modal @handleAfterHidden="handleAfterLeave" v-model="visible">
     <template v-slot:header>
-      <div class="easychat-confirm-hedaer">
-        <Icon height="24px" width="24px" :type="iconType" /> {{ title }}
-      </div>
+      <div class="easychat-confirm-hedaer"><Icon height="24px" width="24px" :type="iconType" /> {{ title }}</div>
     </template>
     <template v-slot:body>
       <p class="easychat-confirm-body">{{ content }}</p>
     </template>
     <template v-slot:footer>
       <div class="easychat-confirm-footer">
-        <a href="javascript:;" @click="cancel" class="confirm-btn"
-          ><Button size="large" type="default">取消</Button></a
-        >
+        <a href="javascript:;" @click="cancel" class="confirm-btn"><Button size="large" type="default">取消</Button></a>
         <a href="javascript:;" @click="confirm" class="confirm-btn"
-          ><Button
-            style="border-radius: 0px;"
-            size="large"
-            :type="type"
-            :textColor="textColor"
-            >确认</Button
-          ></a
+          ><Button style="border-radius: 0px;" size="large" :type="type" :textColor="textColor">确认</Button></a
         >
       </div>
     </template>
   </Modal>
 </template>
 
-
 <script>
-import Modal from '@/components/Modal';
-import Button from '@/components/Button';
+import { Modal } from 'easychat-ui';
+import { Button } from 'easychat-ui';
 import Icon from '@/components/Icon';
 
 export default {
@@ -64,7 +53,7 @@ export default {
       switch (this.type) {
         case 'default':
           return '#4485f5';
-        default: 
+        default:
           return '#4485f5';
       }
     },
@@ -136,4 +125,3 @@ export default {
   }
 }
 </style>
-

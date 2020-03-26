@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Button from '@/components/Button';
+import { Button } from 'easychat-ui';
 
 export default {
   name: 'Setting',

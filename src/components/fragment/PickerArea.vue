@@ -10,7 +10,7 @@
 import Picker from './Picker';
 import ProvinceAreaData from '@/assets/data/province.json';
 import pinyin from 'pinyin';
-import Drawer from '@/components/Drawer';
+import { Drawer } from 'easychat-ui';
 
 export default {
   name: 'PickerArea',

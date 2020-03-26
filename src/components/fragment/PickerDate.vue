@@ -9,7 +9,7 @@
 <script>
 import Picker from './Picker';
 import pinyin from 'pinyin';
-import Drawer from '@/components/Drawer';
+import { Drawer } from 'easychat-ui';
 
 const YEAR_START = 1920;
 const YEAR_END = 2050;

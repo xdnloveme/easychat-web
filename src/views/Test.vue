@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <Scroll
+    <Scroll
       @pull-down-start="pullDownProcess"
       :pullDown="{
         height: 50,
@@ -20,7 +20,7 @@
       :height="500"
     >
       <p v-for="item in dataNum" :key="item">测试数据 {{ item }}</p>
-    </Scroll> -->
+    </Scroll>
     <!-- <Picker :height="200" v-bind:selected.sync="value" :dataSource="pickerData2"/>
     {{value}} -->
 
@@ -39,12 +39,11 @@
 
 <script>
 // 测试页面（仅供参考）
-
+import { Scroll } from 'easychat-ui';
 import Animate from '@/utils/animate';
 import Picker from '@/components/fragment/Picker';
 import PickerArea from '@/components/fragment/PickerArea';
 import PickerDate from '@/components/fragment/PickerDate';
-import Scroll from '@/components/Scroll';
 import Success from '@/components/fragment/Success';
 
 const DEFAULT_OPTIONS = {

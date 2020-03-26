@@ -22,8 +22,7 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import ImageWall from '@/components/ImageWall';
-import Scroll from '@/components/Scroll';
+import { ImageWall, Scroll } from 'easychat-ui';
 import ActionSheet from '@/components/fragment/ActionSheet';
 import UserCardDetail from './UserCardDetail';
 

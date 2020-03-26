@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Scroll from '@/components/Scroll';
+import { Scroll } from 'easychat-ui';
 
 const DEFAULT_CELL_HEIGHT = 30;
 

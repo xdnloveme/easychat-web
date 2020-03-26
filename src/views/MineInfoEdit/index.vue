@@ -34,10 +34,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import { Drawer } from 'easychat-ui';
 import ChatListCell from '@/components/fragment/ChatListCell';
 import FormBased from '@/components/fragment/FormBased';
 import PickerArea from '@/components/fragment/PickerArea';
-import Drawer from '@/components/Drawer';
 import ActionSheet from '@/components/fragment/ActionSheet';
 
 const INIT_LIST = [

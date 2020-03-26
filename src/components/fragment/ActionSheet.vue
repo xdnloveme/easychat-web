@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Drawer from '@/components/Drawer';
+import { Drawer } from 'easychat-ui';
 
 export default {
   name: 'PopupSelect',

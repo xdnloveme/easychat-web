@@ -23,11 +23,10 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
+import { Scroll } from 'easychat-ui';
 import { getAvatarList } from '@/api/data';
-import ImageWall from '@/components/ImageWall';
-import Scroll from '@/components/Scroll';
 import AvatarList from './components/AvatarList';
-import Button from '@/components/Button';
+import { Button, ImageWall } from 'easychat-ui';
 import shopIcon from './assets/shop.svg';
 
 export default {
