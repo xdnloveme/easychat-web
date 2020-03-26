@@ -2,7 +2,7 @@
 简聊(easychat-web)✨✨，简单、完全开源的，轻量、一体化组件项目，有兴趣的可以pr一起改进这个项目
 
 + 简聊H5在线预览（preview）:http://chat.tangyida.top.
-+ 服务端源码地址（server-source）:[easychat后台源码](https://github.com/xdnloveme/easychat)（koa2 + mysql ，orm层是*sequ*lize，自己搭的MVC架构）
++ 服务端源码地址（server-source）:[easychat后台源码](https://github.com/xdnloveme/easychat)（koa2 + mysql ，orm层是*sequ*lize，自己搭的架构）
 + 测试账号（Test Acount）:`admin` 密码: `123456`
 
 **手机端**可以直接扫如下二维码预览：
@@ -59,3 +59,7 @@ npm run serve
 ## 📖 文档（Doc）
 
 持续跟进
+
+# License
+
+[MIT](https://github.com/xdnloveme/easychat-web/blob/master/LICENSE)
