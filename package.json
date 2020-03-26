@@ -7,6 +7,22 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdnloveme/easychat-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xdnloveme/easychat-web/issues"
+  },
+  "homepage": "https://github.com/xdnloveme/easychat-web#readme",
+  "keywords": [
+    "easychat",
+    "easychat-ui",
+    "vue",
+    "components",
+    "socket.io",
+    "javascript"
+  ],
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@vue/babel-preset-app": "^3.6.0",
