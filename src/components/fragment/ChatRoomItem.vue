@@ -1,9 +1,12 @@
 <template>
   <div class="easychat-room_item-wrapper">
-    <div v-if="!localInfo.isTip" :class="['easychat-room_item', localInfo.isMine ? 'room-item-mine' : 'room-item-other']">
+    <div
+      v-if="!localInfo.isTip"
+      :class="['easychat-room_item', localInfo.isMine ? 'room-item-mine' : 'room-item-other']"
+    >
       <div v-show="isShowIcon" @click="iconEvent" class="center-icon">
         <Icon size="small" type="loading-spining" v-if="isShowEmit" />
-        <Icon size="small" type="warning" v-if="isShowFailed" />
+        <Icon class="warning" size="small" type="warning" v-if="isShowFailed" />
       </div>
       <img v-if="!localInfo.isMine" @click="avatarClick" class="avatar" :src="localInfo.avatar" />
       <div class="content">
@@ -55,7 +58,7 @@ export default {
         return {
           ...this.item,
           ...sourcePublicInfo,
-        }
+        };
       }
       return this.item;
     },
@@ -91,6 +94,10 @@ export default {
 
   .center-icon {
     align-self: center;
+
+    .warning {
+      color: #fa5151;
+    }
   }
 
   .avatar {

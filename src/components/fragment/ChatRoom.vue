@@ -223,10 +223,12 @@ export default {
     }
 
     .emoji-chatting {
+      color: #898a89;
       margin-left: 10px;
     }
 
     .add-chatting {
+      color: #898a89;
       margin-left: 6px;
     }
   }

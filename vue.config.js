@@ -1,6 +1,6 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const AutoIconCreated = require('./src/utils/auto-icon-created');
+const Svg2IconfontWebpack = require('svg2iconfont-webpack');
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
@@ -28,11 +28,22 @@ module.exports = {
             },
           },
         }),
-      // 自动生成ICON组件的插件，还有一些格式问题，未进行修复，后续进行修正
-      // new AutoIconCreated({
-      //   template: './components/template/IconTemp.vue',
-      //   output: './components/Icon.vue',
-      // }),
+      new Svg2IconfontWebpack({
+        assetsPath: resolve('./assets/icon'),
+        className: 'easychat-iconfont',
+        // output（输出配置）
+        output: {
+          fileName: 'easychat-font',
+          cssFileName: 'easychat-webfont',
+        },
+        // font options（字体配置）
+        fontOptions: {
+          // 图标的基准大小
+          // icon basic size
+          fontSize: 32,
+          fontFamily: 'easychat-iconfont',
+        },
+      }),
     ].filter(Boolean),
   },
   // pwa 配置
@@ -68,9 +79,6 @@ module.exports = {
         ws: true,
         changeOrigin: true,
       },
-    },
-    watchOptions: {
-      ignored: [resolve('./components/Icon.vue')],
     },
   },
 };

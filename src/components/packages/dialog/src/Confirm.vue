@@ -1,7 +1,7 @@
 <template>
   <Modal @handleAfterHidden="handleAfterLeave" v-model="visible">
     <template v-slot:header>
-      <div class="easychat-confirm-hedaer"><Icon height="24px" width="24px" :type="iconType" /> {{ title }}</div>
+      <div class="easychat-confirm-hedaer"><Icon :class="iconClass" :size="24" :type="iconType" /> {{ title }}</div>
     </template>
     <template v-slot:body>
       <p class="easychat-confirm-body">{{ content }}</p>
@@ -56,6 +56,12 @@ export default {
           return '#4485f5';
       }
     },
+    iconClass () {
+      if (this.type === 'default') {
+        return `icon-question`
+      }
+      return `icon-${this.type}`
+    },
     iconType () {
       switch (this.type) {
         case 'default':
@@ -100,6 +106,10 @@ export default {
 <style lang="scss" scoped>
 .easychat-confirm-body {
   margin: 0;
+}
+
+.icon-question {
+  color: #fe4a4a;
 }
 
 .easychat-confirm-footer {

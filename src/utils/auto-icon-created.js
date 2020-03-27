@@ -19,7 +19,7 @@ const resolve = currentPath => {
 // icon组件 默认模板地址
 const ICON_TEMP_INPUT = resolve('./components/template/IconTemp.vue');
 // icon组件 默认输出地址
-const ICON_TEMP_OUTPUT = resolve('./components/template/IconTest.vue');
+const ICON_TEMP_OUTPUT = resolve('./components/template/Icon.vue');
 
 const transformOptions = {
   ast: true,
