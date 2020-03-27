@@ -52,7 +52,8 @@ export default function fetch (config = {}, params = null) {
 
     if (typeof config === 'object') Object.assign(resolveConfig, config);
 
-    axios(resolveConfig)
+    axios
+      .request(resolveConfig)
       .then(res => {
         if (res.status !== 200) {
           reject(res);
@@ -61,7 +62,33 @@ export default function fetch (config = {}, params = null) {
         resolve(data);
       })
       .catch(err => {
+        console.dir(err);
+        if (err.response && err.response.data) {
+          reject(err.response.data);
+        }
+
+        if (!err.response) {
+          reject(handleRequestError(err));
+        }
         reject(err);
       });
   });
 }
+
+function handleRequestError (e) {
+  const message = e.message;
+  const errorPayload = {
+    state: false,
+    message: '',
+  };
+  switch (message) {
+    case 'Network Error':
+      errorPayload.message = '网络连接异常';
+      break;
+    default:
+      errorPayload.message = '网络异常🙁';
+      break;
+  }
+  return errorPayload;
+}
+

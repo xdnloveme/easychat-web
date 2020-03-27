@@ -34,7 +34,6 @@ const getTabbarRoutes = async routes => {
   let tabbarRoutes = {};
   for (let i = 0; i < routes.length; i++) {
     const { component, path, children = [], name } = routes[i];
-    console.log(routes[i]);
     if (component === TabbarLayout) {
       tabbarRoutes[path] = children;
     } else if (typeof component === 'function') {
@@ -132,8 +131,9 @@ export default new Vuex.Store({
       if (!token) {
         return { state: false, data: null };
       }
-
+      console.log('还是说')
       const response = await authToken();
+      console.log('进来了没啊');
       if (response.code !== 0) {
         context.commit(types.LOGOUT_CLEAR);
         return { state: false, data: response };

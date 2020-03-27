@@ -44,7 +44,7 @@ export default {
     }),
     btnOperate () {
       if (this.isDisconnect) {
-        return location.href = 'https://github.com/xdnloveme';
+        return (location.href = 'https://github.com/xdnloveme');
       }
       this.backToLogin();
     },
@@ -87,9 +87,16 @@ export default {
         .catch(err => {
           this.isShowFailure = true;
           this.$toast(err.message).toast();
-          this.setOptions(['desc', 'title', 'button'], [`服务器好像开小差了`, '无法连接到服务', {
-            name: '去Github提issues',
-          }]);
+          this.setOptions(
+            ['desc', 'title', 'button'],
+            [
+              err.message || '服务器好像开小差了',
+              '无法连接到服务',
+              {
+                name: '去Github提issues',
+              },
+            ],
+          );
           this.isDisconnect = true;
         })
         .finally(() => {
