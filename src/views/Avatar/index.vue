@@ -23,18 +23,13 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
-import { Scroll } from 'easychat-ui';
 import { getAvatarList } from '@/api/data';
 import AvatarList from './components/AvatarList';
-import { Button, ImageWall } from 'easychat-ui';
 import shopIcon from './assets/shop.svg';
 
 export default {
   name: 'Avatar',
   components: {
-    ImageWall,
-    Scroll,
-    Button,
     AvatarList,
   },
   computed: {

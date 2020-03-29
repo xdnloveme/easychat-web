@@ -28,7 +28,6 @@
 <script>
 import ChatRoomItem from './ChatRoomItem';
 import Icon from '@/components/Icon';
-import { Scroll } from 'easychat-ui';
 import { isNullAll } from '@/utils/common';
 import { mapActions } from 'vuex';
 
@@ -47,7 +46,6 @@ export default {
   name: 'ChatRoom',
   components: {
     ChatRoomItem,
-    Scroll,
     Icon,
   },
   data () {

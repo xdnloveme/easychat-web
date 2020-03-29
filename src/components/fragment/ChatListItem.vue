@@ -24,13 +24,9 @@
 </template>
 
 <script>
-import { Badge } from 'easychat-ui';
 
 export default {
   name: 'ChatItem',
-  components: {
-    Badge,
-  },
   props: {
     info: {
       type: Object,

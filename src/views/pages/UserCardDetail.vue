@@ -56,15 +56,10 @@
 </template>
 
 <script>
-import { Divider, Button } from 'easychat-ui';
 import { mapActions, mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'UserCardDetail',
-  components: {
-    Divider,
-    Button,
-  },
   props: {
     isShowRequest: {
       type: Boolean,

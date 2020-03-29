@@ -122,9 +122,6 @@ npm run build
 │   │   │   ├── Tabbar.vue // 布局 - tabbar
 │   │   │   ├── TabbarContainer.vue // 布局 - tabbar 容器
 │   │   │   └── TabbarItem.vue // 布局 - tabbar容器条目
-│   │   └── packages // 各类打包组件（准备后期抽取）
-│   │       ├── dialog
-│   │       └── toast
 │   ├── easychat.config.js // 针对此项目的配置总和（后期抽取成黑箱操作）
 │   ├── layouts // 布局页面文件
 │   │   ├── BasicLayout.vue // 基础布局

@@ -34,7 +34,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import { Drawer, PickerArea, ActionSheet } from 'easychat-ui';
 import ChatListCell from '@/components/fragment/ChatListCell';
 import FormBased from '@/components/fragment/FormBased';
 
@@ -93,10 +92,7 @@ export default {
   name: 'MineInfoEdit',
   components: {
     FormBased,
-    PickerArea,
     ChatListCell,
-    ActionSheet,
-    Drawer,
   },
   computed: {
     ...mapState({

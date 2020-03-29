@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { Badge } from 'easychat-ui';
 import { mapGetters, mapActions, mapState } from 'vuex';
 import Icon from '@/components/Icon';
 import Vue from 'vue';
@@ -29,7 +28,6 @@ export default {
   },
   components: {
     Icon,
-    Badge,
   },
   created () {
     this.init();

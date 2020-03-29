@@ -87,7 +87,6 @@
 import { mapState, mapActions } from 'vuex';
 import ChatListCell from '@/components/fragment/ChatListCell';
 import FormBased from '@/components/fragment/FormBased';
-import { EMask } from 'easychat-ui';
 import user from '@/service/user';
 
 export default {
@@ -95,7 +94,6 @@ export default {
   components: {
     FormBased,
     ChatListCell,
-    EMask,
   },
   data () {
     return {

@@ -39,7 +39,6 @@
 
 <script>
 // 测试页面（仅供参考）
-import { Scroll, Picker, PickerArea, PickerDate } from 'easychat-ui';
 import Success from '@/components/fragment/Success';
 
 const DEFAULT_OPTIONS = {
@@ -58,10 +57,6 @@ const DEFAULT_OPTIONS = {
 export default {
   name: 'Test',
   components: {
-    // Picker,
-    // PickerArea,
-    PickerDate,
-    Scroll,
     Success,
   },
   data () {

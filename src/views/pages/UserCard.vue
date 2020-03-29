@@ -22,16 +22,12 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import { ImageWall, Scroll, ActionSheet } from 'easychat-ui';
 import UserCardDetail from './UserCardDetail';
 
 export default {
   name: 'UserCard',
   components: {
-    Scroll,
     UserCardDetail,
-    ImageWall,
-    ActionSheet,
   },
   created () {
     this.$store.commit('nav/SET_NAV_RIGHT', {
