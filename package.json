@@ -27,7 +27,7 @@
     "@babel/core": "^7.4.3",
     "@vue/babel-preset-app": "^3.6.0",
     "autoprefixer": "^9.6.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^2.6.5",
     "easychat-ui": "^1.0.6",
     "pinyin": "^2.9.0",
