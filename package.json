@@ -51,7 +51,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-vue": "^5.2.3",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
     "terser-webpack-plugin": "^2.3.0",
